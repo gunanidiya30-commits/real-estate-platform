@@ -1,8 +1,11 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from app.database import engine, Base
 
 app = FastAPI()
 
+# Create tables automatically
+Base.metadata.create_all(bind=engine)
+
 @app.get("/")
 def home():
-    return {"message": "Real Estate Platform API Running"}
+    return {"message": "Real Estate Platform Connected to MySQL"}
