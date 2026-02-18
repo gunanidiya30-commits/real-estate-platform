@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from app.database import engine, Base
+from app.models.user import User
 
 app = FastAPI()
 
-# Create tables automatically
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
